@@ -43,7 +43,8 @@ function updateEq() {
     }],animation:false
   })
 }
-watch(()=>store.gridResult,(r)=>{if(r) setTimeout(updateEq,50)})
+watch(()=>store.gridResult,(r)=>{if(r){ if(!inst&&eqChart.value) inst=echarts.init(eqChart.value); setTimeout(updateEq,50)}})
+onMounted(()=>{ if(eqChart.value){ inst=echarts.init(eqChart.value); updateEq() } })
 onUnmounted(()=>inst?.dispose())
 </script>
 

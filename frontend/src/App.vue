@@ -10,6 +10,7 @@
         <PriceChart />
       </div>
       <div class="col-narrow">
+        <HealthScore />
         <GridControl />
         <BacktestReport />
       </div>
@@ -23,6 +24,7 @@ import OrderBookDepth from './components/OrderBookDepth.vue'
 import PriceChart from './components/PriceChart.vue'
 import GridControl from './components/GridControl.vue'
 import BacktestReport from './components/BacktestReport.vue'
+import HealthScore from './components/HealthScore.vue'
 import { useTradingStore } from './store/trading'
 const store = useTradingStore()
 onMounted(() => store.connectWS())

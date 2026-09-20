@@ -3,6 +3,7 @@ import numpy as np
 from fastapi import FastAPI, WebSocket, WebSocketDisconnect
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
+from .health import get_health_metrics
 
 app = FastAPI(title="Grid Trading Engine")
 app.add_middleware(CORSMiddleware, allow_origins=["*"], allow_methods=["*"], allow_headers=["*"])
@@ -131,6 +132,12 @@ def run_backtest(config: GridConfig):
         "winRate": round(win_rate, 1),
         "equityCurve": equity_curve
     }
+
+
+@app.post("/api/health")
+def strategy_health(config: GridConfig):
+    """返回各统计周期下策略健康度的原始指标（评分由前端按配置合成）。"""
+    return {"periods": get_health_metrics(config.lowerPrice, config.upperPrice)}
 
 
 @app.websocket("/ws")
