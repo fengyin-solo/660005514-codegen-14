@@ -11,6 +11,7 @@
       </div>
       <div class="col-narrow">
         <GridControl />
+        <StrategyHealth />
         <BacktestReport />
       </div>
     </div>
@@ -22,6 +23,7 @@ import { onMounted, onUnmounted } from 'vue'
 import OrderBookDepth from './components/OrderBookDepth.vue'
 import PriceChart from './components/PriceChart.vue'
 import GridControl from './components/GridControl.vue'
+import StrategyHealth from './components/StrategyHealth.vue'
 import BacktestReport from './components/BacktestReport.vue'
 import { useTradingStore } from './store/trading'
 const store = useTradingStore()

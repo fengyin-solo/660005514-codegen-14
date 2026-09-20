@@ -44,7 +44,8 @@ function updateEq() {
   })
 }
 watch(()=>store.gridResult,(r)=>{if(r) setTimeout(updateEq,50)})
-onUnmounted(()=>inst?.dispose())
+onMounted(()=>{if(eqChart.value){inst=echarts.init(eqChart.value);updateEq()}})
+onUnmounted(()=>{ if(inst) inst.dispose() })
 </script>
 
 <style scoped>
